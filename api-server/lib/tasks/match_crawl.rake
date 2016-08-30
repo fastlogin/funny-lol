@@ -1,14 +1,11 @@
 
 namespace :match_crawl do
-
-
-
-	desc "Testing, testing."
-	task :test_one => :environment do
-		puts getSomeMore(3)
+	desc "Testing saving via crontab"
+	task :test_save_match => :environment do
+		Match.create({
+			player1: 'The current time is:',
+			player2: Time.now.inspect,
+			matchWon: true
+			})
 	end
 end
-
-	def getSomeMore(value)
-		value + 5
-	end
