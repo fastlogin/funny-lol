@@ -12,6 +12,12 @@ class CreateMatches < ActiveRecord::Migration[5.0]
       t.string :match_type
       t.string :season
       t.string :platform
+      ##
+      # Classification booleans, marks if a match has been
+      # classified/looked at yet and if a match was classified
+      # as troll.
+      t.boolean :has_been_classified # marks if a match has been looked at
+      t.boolean :is_funny # marks if match is troll/funny
       t.timestamps
     end
   end
