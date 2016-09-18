@@ -1,0 +1,2 @@
+class ChampionItemMetric < ApplicationRecord
+end

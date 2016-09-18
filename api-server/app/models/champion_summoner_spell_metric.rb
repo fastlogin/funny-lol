@@ -1,0 +1,2 @@
+class ChampionSummonerSpellMetric < ApplicationRecord
+end
