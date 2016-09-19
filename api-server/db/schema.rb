@@ -13,12 +13,4 @@
 
 ActiveRecord::Schema.define(version: 20160610064547) do
 
-  create_table "matches", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.string   "player1"
-    t.string   "player2"
-    t.boolean  "matchWon"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
 end

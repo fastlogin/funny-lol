@@ -12,6 +12,6 @@ class CreateMatchEventChampionKills < ActiveRecord::Migration[5.0]
 
       t.timestamps
     end
+    add_foreign_key :match_event_champion_kills, :matches, column: :match_id, primary_key: "match_id"
   end
-  add_foreign_key :match_event_champion_kills, :matches, column: :match_id, primary_key: "match_id"
 end

@@ -7,6 +7,6 @@ class CreateChampionSummonerSpellMetrics < ActiveRecord::Migration[5.0]
       t.intger :num_games_won
       t.timestamps
     end
+    add_index :champion_summoner_spell_metrics, [:champion_id, :summoner_spell_id], :unique => true
   end
-  add_index :champion_summoner_spell_metrics, [:champion_id, :summoner_spell_id], :unique => true
 end

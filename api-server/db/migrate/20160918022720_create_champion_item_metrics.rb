@@ -7,6 +7,6 @@ class CreateChampionItemMetrics < ActiveRecord::Migration[5.0]
       t.intger :num_games_won
       t.timestamps
     end
+    add_index :champion_item_metrics, [:champion_id, :item_id], :unique => true
   end
-  add_index :champion_item_metrics, [:champion_id, :item_id], :unique => true
 end
