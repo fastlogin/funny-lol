@@ -13,4 +13,13 @@
 
 ActiveRecord::Schema.define(version: 20160610064547) do
 
+  create_table "champion_summoner_spell_metrics", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer  "champion_id"
+    t.integer  "summoner_spell_id"
+    t.integer  "num_games_picked"
+    t.integer  "num_games_won"
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
+  end
+
 end
