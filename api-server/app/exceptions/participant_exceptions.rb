@@ -18,3 +18,12 @@ class NotEqualTenParticipantIdsError < StandardError
 			 " A match must have exactly 10 participant ids")
 	end
 end
+
+##
+# Exception for when there is a mismatch between participant and participant identity
+##
+class ParticipantIdentityError < StandardError
+	def initialize()
+		puts("Participant does not match with participant identity")
+	end
+end
