@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160918022805) do
+ActiveRecord::Schema.define(version: 20160919053624) do
 
   create_table "champion_item_metrics", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "champion_id"
@@ -34,7 +34,7 @@ ActiveRecord::Schema.define(version: 20160918022805) do
   end
 
   create_table "match_event_champion_kills", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.integer  "match_id"
+    t.bigint   "match_id"
     t.string   "event_type"
     t.datetime "time_stamp"
     t.integer  "position_x"
@@ -46,7 +46,7 @@ ActiveRecord::Schema.define(version: 20160918022805) do
     t.index ["match_id"], name: "index_match_event_champion_kills_on_match_id", using: :btree
   end
 
-  create_table "matches", primary_key: "match_id", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "matches", primary_key: "match_id", id: :bigint, default: nil, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "map_id"
     t.string   "region"
     t.datetime "match_date_time"
@@ -63,7 +63,7 @@ ActiveRecord::Schema.define(version: 20160918022805) do
   end
 
   create_table "participants", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.integer  "match_id"
+    t.bigint   "match_id"
     t.integer  "summoner_id"
     t.string   "summoner_name"
     t.integer  "participant_id"
