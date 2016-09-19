@@ -39,3 +39,6 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 # Whenever gem for scheduling crontabs with rake tasks
 gem 'whenever', :require => false
+
+# HTTP gem for making API calls in the backend, better than Net::HTTP
+gem "http"
