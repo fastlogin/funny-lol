@@ -24,7 +24,7 @@ class Match < ApplicationRecord
 	# Model methods and functions
 	##
 
-	# Check if a match with match_id = match_json["matchId"] already exists in dafabase.
+	# Check if a match with match_id = match_json["matchId"] already exists in database.
 	def self.check_match_existence(match_json)
 		Match.exists?(match_json["matchId"])
 	end

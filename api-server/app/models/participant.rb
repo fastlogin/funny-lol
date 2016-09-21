@@ -30,7 +30,9 @@ class Participant < ApplicationRecord
 			raise NotEqualTenParticipantsError.new(match_id, num_participants) if num_participants != 10
 		rescue NotEqualTenParticipantsError => e
 			logger.error e
+			return true
 		end
+		return false
 	end
 
 	# Check if number of participant ids for a match = 10
@@ -40,7 +42,9 @@ class Participant < ApplicationRecord
 			raise NotEqualTenParticipantIdsError.new(match_id, num_participant_ids) if num_participant_ids != 10
 		rescue NotEqualTenParticipantIdsError => e
 			logger.error e
+			return true
 		end
+		return false
 	end
 
 	# Given a match record, create the 10 participants for it from the data found
@@ -53,8 +57,8 @@ class Participant < ApplicationRecord
 		participant_identities = match_json["participantIdentities"]
 
 		# Validation
-		Participant.check_participant_num_validity(match_id, participants)
-		Participant.check_participant_id_num_validity(match_id, participant_identities)
+		return if Participant.check_participant_num_validity(match_id, participants)
+		return if Participant.check_participant_id_num_validity(match_id, participant_identities)
 
 		# Sort so we can match up participants to participant identities to build the participant record
 		p_sorted = participants.sort_by { |k| k["participantId"] }

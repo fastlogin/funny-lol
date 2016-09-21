@@ -2,29 +2,26 @@
 ##
 # Exception for when an item is not recognized
 ##
-class NotEqualTenParticipantsError < StandardError
-	def initialize(match_id, num_participants)
-		puts("Match " + match_id.to_s + " has " + num_participants.to_s + " participants." \
-			 " A match must have exactly 10 participants")
+class ItemNotExistError < StandardError
+	def initialize(item_id)
+		puts("There exists no item with id: " + item_id.to_s)
 	end
 end
 
 ##
 # Exception for when a champion is not recognized
 ##
-class NotEqualTenParticipantsError < StandardError
-	def initialize(match_id, num_participants)
-		puts("Match " + match_id.to_s + " has " + num_participants.to_s + " participants." \
-			 " A match must have exactly 10 participants")
+class ChampionNotExistError < StandardError
+	def initialize(champion_id)
+		puts("There exists no champion with id: " + champion_id.to_s)
 	end
 end
 
 ##
-# Exception for when a champion is not recognized
+# Exception for when a summoner spell is not recognized
 ##
-class NotEqualTenParticipantsError < StandardError
-	def initialize(match_id, num_participants)
-		puts("Match " + match_id.to_s + " has " + num_participants.to_s + " participants." \
-			 " A match must have exactly 10 participants")
+class SSpellNotExistError < StandardError
+	def initialize(sspell_id)
+		puts("There exists no summoner spell with id: " + sspell_id.to_s)
 	end
 end
