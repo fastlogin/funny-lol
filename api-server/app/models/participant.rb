@@ -45,7 +45,7 @@ class Participant < ApplicationRecord
 
 	# Given a match record, create the 10 participants for it from the data found
 	# in an entire match JSON.
-	def self.create_participant(match, match_json)
+	def self.create_participants(match, match_json)
 
 		# Initialize variables
 		match_id = match.match_id
@@ -104,7 +104,7 @@ class Participant < ApplicationRecord
 			@curr_participant.minions_killed = participant_stats["minionsKilled"]
 
 			@curr_participant.save # save
-			created_participants.push[@curr_participant] # append to returned collection
+			created_participants.push(@curr_participant) # append to returned collection
 		end
 		created_participants # return record collection
 	end
