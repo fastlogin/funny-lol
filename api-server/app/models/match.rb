@@ -25,8 +25,8 @@ class Match < ApplicationRecord
 	##
 
 	# Check if a match with match_id = match_json["matchId"] already exists in database.
-	def self.check_match_existence(match_json)
-		Match.exists?(match_json["matchId"])
+	def self.check_match_existence(match_id)
+		Match.exists?(match_id)
 	end
 
 	# Create a match from a match JSON and save it to database and return it.

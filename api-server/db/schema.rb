@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160921060125) do
+ActiveRecord::Schema.define(version: 20160923082332) do
 
   create_table "champion_item_metrics", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "champion_id"
@@ -50,7 +50,7 @@ ActiveRecord::Schema.define(version: 20160921060125) do
     t.integer  "map_id"
     t.string   "region"
     t.datetime "match_date_time"
-    t.time     "match_duration"
+    t.integer  "match_duration"
     t.string   "match_queue_type"
     t.string   "match_mode"
     t.string   "match_type"

@@ -112,4 +112,12 @@ class Participant < ApplicationRecord
 		end
 		created_participants # return record collection
 	end
+
+	def get_items
+		[item_one_id, item_two_id, item_three_id, item_four_id, item_five_id, item_six_id, item_seven_id]
+	end
+
+	def get_sspells
+		[spell_one_id, spell_two_id]
+	end
 end

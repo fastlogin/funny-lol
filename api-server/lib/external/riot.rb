@@ -43,7 +43,7 @@ class RiotApi
 	end
 
 	# (GET) featured-games-v1.0
-	def self.get_featured_matches
+	def self.get_featured_games
 
 		# Initialize url parameters and build url for request
 		base = BASE_URL_V3
