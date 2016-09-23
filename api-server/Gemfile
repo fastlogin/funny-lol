@@ -41,4 +41,8 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'whenever', :require => false
 
 # HTTP gem for making API calls in the backend, better than Net::HTTP
-gem "http"
+gem 'http'
+
+# Figaro is used for abstracting out secrets in app configurations. In our case it will mainly be
+# used to hide out Riot API key(s). This is the main secret that we have
+gem 'figaro'
