@@ -19,6 +19,6 @@
 
 # Learn more: http://github.com/javan/whenever
 
-every 1.minutes do
-	rake "match_crawl:test_save_match", :environment => 'development'
+every 30.minutes do
+	rake "funny_lol:match_crawl", :environment => 'development'
 end

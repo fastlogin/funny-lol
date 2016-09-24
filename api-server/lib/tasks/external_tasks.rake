@@ -57,13 +57,14 @@ namespace :funny_lol do
 
 				match_counter = 0
 				match_list.each do |match|
+
 					if match_counter >= match_count
 						break
 					end
+					
 					match_id = match["matchId"]
-					if Match.check_match_existence(match_id)
-						next
-					end
+					next if Match.check_match_existence(match_id) # Skip if we have seen this match before
+
 					full_match = RiotApi.get_match(match_id)
 					next if full_match == -1
 					saved_match = Match.create_match(full_match)
