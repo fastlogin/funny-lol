@@ -30,6 +30,8 @@ class ChampionItemMetric < ApplicationRecord
 	# Update statistic for champion-item usage
 	def self.update_champion_item_stats(winner, champion_id, item_id)
 
+		return if item_id == 0 # item id 0 means empty inventory slot so we don't care, skip
+
 		# Validation
 		begin
 			raise ChampionNotExistError.new(champion_id) if

@@ -31,6 +31,9 @@ class Match < ApplicationRecord
 
 	# Create a match from a match JSON and save it to database and return it.
 	def self.create_match(match_json)
+
+		return if !match_json["matchCreation"] # This can sometimes be empty somehow lol
+
 		@match = Match.new(:match_id => match_json["matchId"])
 		@match.map_id = match_json["mapId"]
 		@match.region = match_json["region"]

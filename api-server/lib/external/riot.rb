@@ -1,6 +1,7 @@
 
-require "http"
-require "json"
+require 'http'
+require 'json'
+require 'http_exceptions'
 
 ##
 # Riot API
@@ -52,7 +53,13 @@ class RiotApi
 		url = "#{base}/featured/?#{api_key}"
 
 		# Send request
-		JSON.parse(HTTP.get(url))
+		response = HTTP.get(url)
+		begin
+			raise Non200ResponseError.new(response.code, url) if response.code != 200
+		rescue Non200ResponseError => e
+			return -1
+		end
+		JSON.parse(response)
 	end
 
 	# (GET) summoner-v1.4
@@ -65,7 +72,13 @@ class RiotApi
 		url = "#{base}/#{version}/summoner/by-name/#{summoner_name}?#{api_key}"
 
 		# Send request
-		JSON.parse(HTTP.get(url))
+		response = HTTP.get(url)
+		begin
+			raise Non200ResponseError.new(response.code, url) if response.code != 200
+		rescue Non200ResponseError => e
+			return -1
+		end
+		JSON.parse(response)
 	end
 
 	# (GET) matchlist-v2.2
@@ -81,7 +94,13 @@ class RiotApi
 		url = "#{base}/#{version}/matchlist/by-summoner/#{id}?rankedQueues=#{queues}&#{seasons}&#{api_key}"
 
 		# Send request
-		JSON.parse(HTTP.get(url))
+		response = HTTP.get(url)
+		begin
+			raise Non200ResponseError.new(response.code, url) if response.code != 200
+		rescue Non200ResponseError => e
+			return -1
+		end
+		JSON.parse(response)
 	end
 
 	# (GET) match-v2.2
@@ -95,10 +114,17 @@ class RiotApi
 		url = "#{base}/#{version}/match/#{id}?includeTimeline=true&#{api}"
 
 		# Send request
-		JSON.parse(HTTP.get(url))
+		response = HTTP.get(url)
+		begin
+			raise Non200ResponseError.new(response.code, url) if response.code != 200
+		rescue Non200ResponseError => e
+			return -1
+		end
+		JSON.parse(response)
 	end
 
 	# (GET) lol-static-data-v1.2, get item with from data
+	# @DEPRECATED
 	def self.get_item(item_id)
 
 		# Initialize url paramters and build url for request
@@ -109,29 +135,12 @@ class RiotApi
 		url = "#{base}/static-data/na/#{version}/item/#{id}?itemData=from&#{api}"
 
 		# Send request
-		JSON.parse(HTTP.get(url))
-	end
-end
-
-##
-# Riot API Util Class
-#
-# @author: George Ding (gd264@cornell.edu)
-# @description: Util class for useful operations involving calls to the Riot API
-##
-class RiotApiUtil
-
-	# Item propagation is the process of recursively generating all of the items that make up a
-	# single item in its recipe. This will be used to back propagate champion-item counts for smaller
-	# basic items that do not get counted that often in final builds.
-	def self.item_propagation(item_list, item_id)
-		recipe = RiotApi.get_item(item_id)["from"]
-		if !recipe
-			return
+		response = HTTP.get(url)
+		begin
+			raise Non200ResponseError.new(response.code, url) if response.code != 200
+		rescue Non200ResponseError => e
+			return -1
 		end
-		recipe.each do |item|
-			item_list.push(item)
-			RiotApiUtil.item_propagation(item_list, item)
-		end
+		JSON.parse(response)
 	end
 end

@@ -83,3 +83,16 @@ champions.each do |champion, data_champion|
 			})
 	end
 end
+
+##
+# Item Dependencies
+items.each do |item, data|
+	recipe_list = data["from"]
+	next if !recipe_list
+	recipe_list.each do |item_id|
+		ItemDependency.create({
+			parent_item_id: data["id"],
+			child_item_id: item_id.to_i
+			})
+	end
+end
