@@ -131,7 +131,7 @@ class RiotApiUtil
 		end
 		recipe.each do |item|
 			item_list.push(item)
-			RiotApiUtil.item_propogation(item_list, item)
+			RiotApiUtil.item_propagation(item_list, item)
 		end
 	end
 end
