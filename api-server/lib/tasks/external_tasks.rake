@@ -13,7 +13,14 @@ require 'rake'
 namespace :funny_lol do
 	desc "Testing saving via crontab"
 	task :match_crawl => [:environment] do
+
 		require 'riot'
+
+		num_players_game = STANDARD_TEAM_SIZE * STANDARD_TEAM_NUM
+		num_players_featured_games = num_players_game * NUM_FEATURED_GAMES
+		remaining_requests = TOTAL_REQUESTS - 1 - (2 * (NUM_FEATURED_GAMES * num_players_game))
+		match_count = remaining_requests / num_players_featured_games
+
 		featured_games = (RiotApi.get_featured_games)["gameList"]
 		featured_games.each do |featured_game|
 			featured_game["participants"].each do |participant|
@@ -24,7 +31,7 @@ namespace :funny_lol do
 				next if !match_list
 				match_counter = 0
 				match_list.each do |match|
-					if match_counter > 6
+					if match_counter >= match_count
 						break
 					end
 					match_id = match["matchId"]

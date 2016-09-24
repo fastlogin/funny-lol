@@ -23,6 +23,7 @@ class RiotApi
 
 	##
 	# Endpoint versions, will update as Riot API updates
+	STATIC_VERSION = "1.2"
 	SUMMONER_VERSION = "1.4"
 	MATCH_LIST_VERSION = "2.2"
 	MATCH_VERSION = "2.2"
@@ -95,5 +96,42 @@ class RiotApi
 
 		# Send request
 		JSON.parse(HTTP.get(url))
+	end
+
+	# (GET) lol-static-data-v1.2, get item with from data
+	def self.get_item(item_id)
+
+		# Initialize url paramters and build url for request
+		base = BASE_URL
+		version = RiotApi.get_v(STATIC_VERSION)
+		id = item_id.to_s
+		api = API_KEY_EXT
+		url = "#{base}/static-data/na/#{version}/item/#{id}?itemData=from&#{api}"
+
+		# Send request
+		JSON.parse(HTTP.get(url))
+	end
+end
+
+##
+# Riot API Util Class
+#
+# @author: George Ding (gd264@cornell.edu)
+# @description: Util class for useful operations involving calls to the Riot API
+##
+class RiotApiUtil
+
+	# Item propagation is the process of recursively generating all of the items that make up a
+	# single item in its recipe. This will be used to back propagate champion-item counts for smaller
+	# basic items that do not get counted that often in final builds.
+	def self.item_propagation(item_list, item_id)
+		recipe = RiotApi.get_item(item_id)["from"]
+		if !recipe
+			return
+		end
+		recipe.each do |item|
+			item_list.push(item)
+			RiotApiUtil.item_propogation(item_list, item)
+		end
 	end
 end
