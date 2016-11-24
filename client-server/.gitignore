@@ -4,3 +4,6 @@ app/**/*.map
 node_modules
 jspm_packages
 bower_components
+
+bootstrap.min.css
+bootstrap.min.css.map

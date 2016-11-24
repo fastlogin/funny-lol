@@ -7,13 +7,13 @@ import 'rxjs/add/operator/map';
 export class MatchListService {
   constructor (private http: Http) {}
 
-  getTime() {
-  	return this.http
-  		.get('http://jsonplaceholder.typicode.com/posts').map(res => res.json())
-  }
+  // getTime() {
+  // 	return this.http
+  // 		.get('http://jsonplaceholder.typicode.com/posts').map(res => res.json())
+  // }
 
-  getMatches() {
-    return this.http
-      .get('http://localhost:3001/matches').map(res => res.json())
-  }
+  // getMatches() {
+  //   return this.http
+  //     .get('http://localhost:3001/matches').map(res => res.json())
+  // }
 }

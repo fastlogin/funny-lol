@@ -15,14 +15,6 @@ var MatchListService = (function () {
     function MatchListService(http) {
         this.http = http;
     }
-    MatchListService.prototype.getTime = function () {
-        return this.http
-            .get('http://jsonplaceholder.typicode.com/posts').map(function (res) { return res.json(); });
-    };
-    MatchListService.prototype.getMatches = function () {
-        return this.http
-            .get('http://localhost:3001/matches').map(function (res) { return res.json(); });
-    };
     MatchListService = __decorate([
         core_1.Injectable(), 
         __metadata('design:paramtypes', [http_1.Http])

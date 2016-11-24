@@ -12,9 +12,10 @@ var core_1 = require('@angular/core');
 var router_deprecated_1 = require('@angular/router-deprecated');
 var matchlist_component_1 = require('./matchlist.component');
 var matchlist_service_1 = require('./matchlist.service');
+var simple_match_viewer_component_1 = require('./simple-match-viewer.component');
 var AppComponent = (function () {
     function AppComponent() {
-        this.title = 'http://static.comicvine.com/uploads/original/13/139093/3188839-gundam-wing2.jpg';
+        this.title = "Hello World! There is nothing here yet. Funny-LoL is currently being built :)";
     }
     AppComponent = __decorate([
         core_1.Component({
@@ -31,12 +32,13 @@ var AppComponent = (function () {
                 path: '/list',
                 name: 'MatchList',
                 component: matchlist_component_1.MatchListComponent,
-                useAsDefault: true
+                useAsDefault: false
             },
-            // This is for us to reroute the default route to the matchlist route.
             {
-                path: '/**',
-                redirectTo: ['MatchList']
+                path: '/smv',
+                name: 'SimpleMatchViewer',
+                component: simple_match_viewer_component_1.SimpleMatchViewerComponent,
+                useAsDefault: false
             }
         ]), 
         __metadata('design:paramtypes', [])

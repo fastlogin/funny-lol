@@ -17,16 +17,21 @@ var MatchListComponent = (function () {
         this.matchListService = matchListService;
     }
     MatchListComponent.prototype.ngOnInit = function () {
-        var _this = this;
-        this.matchListService.getMatches().subscribe(function (data) {
-            _this.matches = data;
-        }, function (error) { return alert(error); }, function () { return console.log('Success.'); });
+        // this.matchListService.getMatches().subscribe(
+        //     (data: Match[]) => {
+        //       this.matches = data;
+        //     },
+        //     error => alert(error),
+        //     () => console.log('Success.')
+        //   );
+        this.matches = [];
+        this.some_field = "Hello World.";
     };
     MatchListComponent.prototype.parseJSONArray = function (data) {
     };
     MatchListComponent = __decorate([
         core_1.Component({
-            selector: 'ng2-matches',
+            selector: 'matches',
             templateUrl: 'app/assets/templates/matchlist.html',
             providers: [matchlist_service_1.MatchListService]
         }), 
