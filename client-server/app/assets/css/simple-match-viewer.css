@@ -1,0 +1,145 @@
+.css-smv {
+	min-width: 1240px;
+}
+
+.css-smv-match {
+	margin-top: 20px;
+	margin-bottom: 20px
+}
+
+.css-smv-status-lost {
+	font-family: Roboto;
+	font-weight: bold;
+	font-size: 24px;
+	color: rgb(255, 102, 102);
+}
+
+.css-smv-status-won {
+	font-family: Roboto;
+	font-weight: bold;
+	font-size: 24px;
+	color: rgb(0, 204, 0);
+}
+
+.css-smv-ui-summary {
+	display: inline-block;
+	padding: 10px;
+	width: 125px;
+}
+
+.css-smv-blue-summary {
+	text-align: right;
+}
+
+.css-smv-purple-summary {
+	text-align: left;
+}
+
+.css-smv-blue-participant {
+	border-bottom: dotted 1px;
+	border-color: rgb(154, 192, 205);
+	padding-bottom: 5px;
+	padding-top: 5px;
+}
+
+.css-smv-blue-team-name {
+	font-family: Titillium Web;
+	font-weight: bold;
+	font-size: 30px;
+	color: rgb(74, 112, 125);
+}
+
+.css-smv-purple-team-name {
+	font-family: Titillium Web;
+	font-weight: bold;
+	font-size: 30px;
+	color: rgb(100, 74, 125);
+}
+
+.css-smv-purple-participant {
+	border-bottom: dotted 1px;
+	border-color: rgb(170, 144, 195);
+	padding-bottom: 5px;
+	padding-top: 5px;
+}
+
+.css-smv-last-participant {
+	border: none;
+}
+
+.css-smv-blue-team {
+	background-color: rgb(204, 242, 255);
+}
+
+.css-smv-purple-team {
+	background-color: rgb(230, 204, 255);
+	text-align: right;
+}
+
+.css-smv-champ-ico {
+	max-width: 70px;
+}
+
+.css-smv-tier-ico {
+	max-width: 55px;
+}
+
+.css-smv-summonername {
+	display: inline-block;
+	width: 108px;
+	font-family: Titillium Web;
+	font-weight: bold;
+	font-size: 16px;
+	padding: 10px;
+}
+
+.css-smv-table {
+	display:inline-table;
+}
+
+.css-smv-ui-blue {
+	width: 100px;
+	font-family: Roboto;
+	font-size: 12px;
+	padding-left: 10px;
+	
+}
+
+.css-smv-ui-purple {
+	width: 100px;
+	font-family: Roboto;
+	font-size: 12px;
+	padding-right: 10px;
+	
+}
+
+.css-smv-item-ico {
+	max-width: 28px;
+}
+
+.css-smv-trinket-ico-blue {
+	max-height: 25px;
+	margin-left: -5px;
+	margin-top: 7px;
+}
+
+.css-smv-trinket-ico-purple {
+	max-height: 25px;
+	margin-right: -5px;
+	margin-top: 7px;
+}
+
+.css-smv-ui-ico {
+	margin-top: 12px;
+	margin-right: -14px;
+}
+
+.css-smv-blue-sspell-ico {
+	max-width: 35px;
+	background-color: rgb(154, 192, 205);
+}
+
+.css-smv-purple-sspell-ico {
+	max-width: 35px;
+	background-color: rgb(180, 154, 215);
+}

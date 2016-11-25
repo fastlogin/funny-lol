@@ -2,6 +2,7 @@ typings
 app/**/*.js
 app/**/*.map
 app/assets/fonts
+app/assets/images
 node_modules
 jspm_packages
 bower_components
