@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160924062039) do
+ActiveRecord::Schema.define(version: 20161126024350) do
 
   create_table "champion_item_metrics", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "champion_id"
@@ -107,6 +107,7 @@ ActiveRecord::Schema.define(version: 20160924062039) do
     t.string   "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string   "url_key"
   end
 
   add_foreign_key "match_event_champion_kills", "matches", primary_key: "match_id"

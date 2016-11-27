@@ -1,7 +1,5 @@
 import { Component } from '@angular/core';
 import { RouteConfig, ROUTER_DIRECTIVES, ROUTER_PROVIDERS } from '@angular/router-deprecated';
-import { MatchListComponent } from './matchlist.component';
-import { MatchListService } from './matchlist.service';
 import { SimpleMatchViewerComponent } from './simple-match-viewer.component';
 
 @Component({
@@ -9,18 +7,11 @@ import { SimpleMatchViewerComponent } from './simple-match-viewer.component';
   templateUrl: 'app/assets/templates/main.html',
   directives: [ROUTER_DIRECTIVES],
   providers: [
-    ROUTER_PROVIDERS,
-    MatchListService
+    ROUTER_PROVIDERS
   ]
 })
 
 @RouteConfig([
-  {
-    path: '/list',
-    name: 'MatchList',
-    component: MatchListComponent,
-    useAsDefault: false
-  },
   {
     path: '/smv',
     name: 'SimpleMatchViewer',

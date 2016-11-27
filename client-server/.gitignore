@@ -7,7 +7,7 @@ node_modules
 jspm_packages
 bower_components
 
-.DS_Store
+**.DS_Store
 
 bootstrap.min.css
 bootstrap.min.css.map

@@ -1,10 +1,23 @@
+.css-smv-match-text-area-wrapper {
+	text-align: center;
+}
+
+.css-smv-title {
+	font-size: 18px;
+	font-weight: bold;
+}
+
+.css-smv-get-button {
+	text-align: center;
+}
+
 .css-smv {
 	min-width: 1240px;
 }
 
 .css-smv-match {
-	margin-top: 20px;
-	margin-bottom: 20px
+	margin-top: 15px;
+	margin-bottom: 15px
 }
 
 .css-smv-status-lost {
@@ -27,6 +40,13 @@
 	width: 125px;
 }
 
+.css-smv-duration {
+	font-size: 20px;
+	font-weight: bold;
+	float: left;
+	padding: 10px;
+}
+
 .css-smv-blue-summary {
 	text-align: right;
 }
@@ -38,6 +58,13 @@
 .css-smv-blue-participant {
 	border-bottom: dotted 1px;
 	border-color: rgb(154, 192, 205);
+	padding-bottom: 5px;
+	padding-top: 5px;
+}
+
+.css-smv-purple-participant {
+	border-bottom: dotted 1px;
+	border-color: rgb(170, 144, 195);
 	padding-bottom: 5px;
 	padding-top: 5px;
 }
@@ -54,17 +81,6 @@
 	font-weight: bold;
 	font-size: 30px;
 	color: rgb(100, 74, 125);
-}
-
-.css-smv-purple-participant {
-	border-bottom: dotted 1px;
-	border-color: rgb(170, 144, 195);
-	padding-bottom: 5px;
-	padding-top: 5px;
-}
-
-.css-smv-last-participant {
-	border: none;
 }
 
 .css-smv-blue-team {
@@ -86,11 +102,12 @@
 
 .css-smv-summonername {
 	display: inline-block;
-	width: 108px;
+	width: 120px;
 	font-family: Titillium Web;
 	font-weight: bold;
-	font-size: 16px;
+	font-size: 14px;
 	padding: 10px;
+	white-space: nowrap;
 }
 
 .css-smv-table {

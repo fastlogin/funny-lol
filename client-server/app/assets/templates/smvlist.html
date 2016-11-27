@@ -1,0 +1,120 @@
+<div class="container css-smv">
+  <div *ngFor="let match of matches" class="row row-centered css-smv-match">
+    <div class="col-md-6 col-centered css-smv-blue-team">
+      <div class="css-smv-blue-summary">
+        <span class="css-smv-duration">
+          {{calculateMinSec(match.duration)}}
+        </span>
+        <span class="{{match.blueWon ? 'css-smv-status-won' : 'css-smv-status-lost'}}">
+          {{match.blueWon ? 'WON' : 'LOST'}}
+        </span>
+        <span class="css-smv-ui-summary">
+          <img src="http://ddragon.leagueoflegends.com/cdn/5.5.1/img/ui/score.png" class="css-smv-ui-ico">
+          {{calculateTotalKills(match.blueParticipants)}}
+          <img src="http://ddragon.leagueoflegends.com/cdn/5.5.1/img/ui/gold.png" class="css-smv-ui-ico">
+          {{prettyPrintGold(calculateTotalGold(match.blueParticipants))}}
+        </span>
+        <span class="css-smv-blue-team-name">
+          Blue Team
+        </span>
+      </div>
+      <div *ngFor="let participant of match.blueParticipants" class="css-smv-blue-participant">
+        <img src="{{participant.championIcoUrl}}" class="css-smv-champ-ico img-circle">
+        <table class="css-smv-table">
+          <tr>
+            <td>
+              <img src="{{participant.sspellOneIcoUrl}}" class="css-smv-blue-sspell-ico img-thumbnail">
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <img src="{{participant.sspellTwoIcoUrl}}" class="css-smv-blue-sspell-ico img-thumbnail">
+            </td>
+          </tr>
+        </table>
+        <img src="{{participant.tierIcoUrl}}" class="css-smv-tier-ico">
+        <span class="css-smv-summonername">
+          {{participant.summonerName}} 
+        </span>
+        <table class="css-smv-table">
+          <tr>
+            <td><img *ngIf="participant.itemOneIcoUrl" src="{{participant.itemOneIcoUrl}}" class="css-smv-item-ico img-rounded"></td>
+            <td><img *ngIf="participant.itemTwoIcoUrl" src="{{participant.itemTwoIcoUrl}}" class="css-smv-item-ico img-rounded"></td> 
+            <td><img *ngIf="participant.itemThreeIcoUrl" src="{{participant.itemThreeIcoUrl}}" class="css-smv-item-ico img-rounded"></td>
+          </tr>
+          <tr>
+            <td><img *ngIf="participant.itemFourIcoUrl" src="{{participant.itemFourIcoUrl}}" class="css-smv-item-ico img-rounded"></td>
+            <td><img *ngIf="participant.itemFiveIcoUrl" src="{{participant.itemFiveIcoUrl}}" class="css-smv-item-ico img-rounded"></td> 
+            <td><img *ngIf="participant.itemSixIcoUrl" src="{{participant.itemSixIcoUrl}}" class="css-smv-item-ico img-rounded"></td>
+          </tr>
+        </table>
+        <img src="{{participant.itemSevenIcoUrl}}" class="css-smv-trinket-ico-blue img-rounded">
+        <span class="css-smv-ui-blue">
+          <img src="http://ddragon.leagueoflegends.com/cdn/5.5.1/img/ui/score.png" class="css-smv-ui-ico">
+          {{calculateKDA(participant.killCount, participant.deathCount, participant.assistCount)}}
+          <img src="http://ddragon.leagueoflegends.com/cdn/5.5.1/img/ui/minion.png" class="css-smv-ui-ico">
+          {{participant.creepScore}}
+          <img src="http://ddragon.leagueoflegends.com/cdn/5.5.1/img/ui/gold.png" class="css-smv-ui-ico">
+          {{prettyPrintGold(participant.goldEarned)}}
+        </span>
+      </div>
+    </div>
+    <div class="col-md-6 col-centered css-smv-purple-team">
+      <div class="css-smv-purple-summary">
+        <span class="css-smv-purple-team-name">
+          Purple Team
+        </span>
+        <span class="css-smv-ui-summary">
+          <img src="http://ddragon.leagueoflegends.com/cdn/5.5.1/img/ui/score.png" class="css-smv-ui-ico">
+          {{calculateTotalKills(match.purpleParticipants)}}
+          <img src="http://ddragon.leagueoflegends.com/cdn/5.5.1/img/ui/gold.png" class="css-smv-ui-ico">
+          {{prettyPrintGold(calculateTotalGold(match.purpleParticipants))}}
+        </span>
+        <span class="{{match.blueWon ? 'css-smv-status-lost' : 'css-smv-status-won'}}">
+          {{match.blueWon ? 'LOST' : 'WON'}}
+        </span>
+      </div>
+      <div *ngFor="let participant of match.purpleParticipants" class="css-smv-purple-participant">    
+        <span class="css-smv-ui-purple">
+          <img src="http://ddragon.leagueoflegends.com/cdn/5.5.1/img/ui/score.png" class="css-smv-ui-ico">
+          {{calculateKDA(participant.killCount, participant.deathCount, participant.assistCount)}}
+          <img src="http://ddragon.leagueoflegends.com/cdn/5.5.1/img/ui/minion.png" class="css-smv-ui-ico">
+          {{participant.creepScore}}
+          <img src="http://ddragon.leagueoflegends.com/cdn/5.5.1/img/ui/gold.png" class="css-smv-ui-ico">
+          {{prettyPrintGold(participant.goldEarned)}}
+        </span>
+        <img src="{{participant.itemSevenIcoUrl}}" class="css-smv-trinket-ico-purple img-rounded">
+        <table class="css-smv-table">
+          <tr>
+            <td><img *ngIf="participant.itemOneIcoUrl" src="{{participant.itemOneIcoUrl}}" class="css-smv-item-ico img-rounded"></td>
+            <td><img *ngIf="participant.itemTwoIcoUrl" src="{{participant.itemTwoIcoUrl}}" class="css-smv-item-ico img-rounded"></td> 
+            <td><img *ngIf="participant.itemThreeIcoUrl" src="{{participant.itemThreeIcoUrl}}" class="css-smv-item-ico img-rounded"></td>
+          </tr>
+          <tr>
+            <td><img *ngIf="participant.itemFourIcoUrl" src="{{participant.itemFourIcoUrl}}" class="css-smv-item-ico img-rounded"></td>
+            <td><img *ngIf="participant.itemFiveIcoUrl" src="{{participant.itemFiveIcoUrl}}" class="css-smv-item-ico img-rounded"></td> 
+            <td><img *ngIf="participant.itemSixIcoUrl" src="{{participant.itemSixIcoUrl}}" class="css-smv-item-ico img-rounded"></td>
+          </tr>
+        </table>
+        <span class="css-smv-summonername">
+          {{participant.summonerName}} 
+        </span>
+        <img src="{{participant.tierIcoUrl}}" class="css-smv-tier-ico">
+        <table class="css-smv-table">
+          <tr>
+            <td>
+              <img src="{{participant.sspellOneIcoUrl}}" class="css-smv-purple-sspell-ico img-thumbnail">
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <img src="{{participant.sspellTwoIcoUrl}}" class="css-smv-purple-sspell-ico img-thumbnail">
+            </td>
+          </tr>
+        </table>
+        <img src="{{participant.championIcoUrl}}" class="css-smv-champ-ico img-circle">
+      </div>
+    </div>
+    <hr>
+  </div>
+</div>
