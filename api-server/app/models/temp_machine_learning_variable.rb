@@ -1,0 +1,2 @@
+class TempMachineLearningVariable < ApplicationRecord
+end

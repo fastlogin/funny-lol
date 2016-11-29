@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161126024350) do
+ActiveRecord::Schema.define(version: 20161129025744) do
 
   create_table "champion_item_metrics", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "champion_id"
@@ -38,6 +38,17 @@ ActiveRecord::Schema.define(version: 20161126024350) do
     t.integer  "child_item_id"
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
+  end
+
+  create_table "item_statistics", primary_key: "item_id", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer  "attack_damage"
+    t.integer  "ability_power"
+    t.integer  "health"
+    t.integer  "mana"
+    t.integer  "armor"
+    t.integer  "magic_resist"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
   end
 
   create_table "match_event_champion_kills", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -108,6 +119,15 @@ ActiveRecord::Schema.define(version: 20161126024350) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string   "url_key"
+  end
+
+  create_table "temp_machine_learning_variables", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer  "champion_id"
+    t.string   "stat"
+    t.decimal  "mean",        precision: 12, scale: 6
+    t.decimal  "variance",    precision: 12, scale: 6
+    t.datetime "created_at",                           null: false
+    t.datetime "updated_at",                           null: false
   end
 
   add_foreign_key "match_event_champion_kills", "matches", primary_key: "match_id"

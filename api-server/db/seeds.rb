@@ -15,46 +15,46 @@ maps = JSON.parse(File.open("db/static/maps.json").read)["data"]
 
 ##
 # Champions
-champions.each do |champion, data|
-	StaticDatum.create({
-		data_type: "CHAMPION", 
-		object_id: data["id"], 
-		name: data["name"] + ", " + data["title"],
-		url_key: data["key"]
-		})
-end
+# champions.each do |champion, data|
+# 	StaticDatum.create({
+# 		data_type: "CHAMPION", 
+# 		object_id: data["id"], 
+# 		name: data["name"] + ", " + data["title"],
+# 		url_key: data["key"]
+# 		})
+# end
 
-##
-# Items
-items.each do |item, data|
-	StaticDatum.create({
-		data_type: "ITEM", 
-		object_id: data["id"], 
-		name: data["name"]
-		})
-end
+# ##
+# # Items
+# items.each do |item, data|
+# 	StaticDatum.create({
+# 		data_type: "ITEM", 
+# 		object_id: data["id"], 
+# 		name: data["name"]
+# 		})
+# end
 
 
-##
-# Summoner Spells
-sspells.each do |sspell, data|
-	StaticDatum.create({
-		data_type: "SSPELL", 
-		object_id: data["id"], 
-		name: data["name"],
-		url_key: data["key"]
-		})
-end
+# ##
+# # Summoner Spells
+# sspells.each do |sspell, data|
+# 	StaticDatum.create({
+# 		data_type: "SSPELL", 
+# 		object_id: data["id"], 
+# 		name: data["name"],
+# 		url_key: data["key"]
+# 		})
+# end
 
-##
-# Maps
-maps.each do |map, data|
-	StaticDatum.create({
-		data_type: "MAP", 
-		object_id: data["mapId"], 
-		name: data["mapName"]
-		})
-end
+# ##
+# # Maps
+# maps.each do |map, data|
+# 	StaticDatum.create({
+# 		data_type: "MAP", 
+# 		object_id: data["mapId"], 
+# 		name: data["mapName"]
+# 		})
+# end
 
 ##
 # Seed statistics to 0 count in order to start data mining
@@ -86,8 +86,8 @@ end
 # 	end
 # end
 
-# ##
-# # Item Dependencies
+##
+# Item Dependencies
 # items.each do |item, data|
 # 	recipe_list = data["from"]
 # 	next if !recipe_list
@@ -98,3 +98,49 @@ end
 # 			})
 # 	end
 # end
+
+# ##
+# # Item Stats
+# items.each do |item, data|
+# 	if data["consumed"] || data["consumeOnFull"]
+# 		next
+# 	end
+# 	item_stats = {
+# 		"FlatArmorMod" => 0,
+#       	"FlatAttackSpeedMod" => 0,
+#       	"FlatCritChanceMod" => 0,
+#       	"FlatHPPoolMod" => 0,
+#       	"FlatMPPoolMod" => 0,
+#       	"FlatMagicDamageMod" => 0,
+#       	"FlatPhysicalDamageMod" => 0,
+#       	"FlatSpellBlockMod" => 0
+# 	}
+# 	data["stats"].each do |stat, value|
+# 		item_stats[stat] = value
+# 	end
+# 	ItemStatistic.create({
+# 		item_id: data["id"],
+#       	attack_damage: item_stats["FlatPhysicalDamageMod"],
+#       	ability_power: item_stats["FlatMagicDamageMod"],
+#       	attack_speed: item_stats["FlatAttackSpeedMod"],
+#       	critical_chance: item_stats["FlatCritChanceMod"],
+#       	health: item_stats["FlatHPPoolMod"],
+#       	mana: item_stats["FlatMPPoolMod"],
+#       	armor: item_stats["FlatArmorMod"],
+#       	magic_resist: item_stats["FlatSpellBlockMod"]
+# 		})
+# end
+
+##
+# Machine Learning Variables
+champions.each do |champion, data|
+	features = ["attack_damage", "ability_power", "health", "mana", "armor", "magic_resist"]
+	features.each do |feature|
+		TempMachineLearningVariable.create({
+			champion_id: data["id"],
+      		stat: feature,
+      		mean: 0.00,
+      		variance: 0.00,
+			})
+	end
+end
