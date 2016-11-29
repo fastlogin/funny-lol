@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161129025744) do
+ActiveRecord::Schema.define(version: 20161129102333) do
 
   create_table "champion_item_metrics", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "champion_id"
@@ -31,6 +31,13 @@ ActiveRecord::Schema.define(version: 20161129025744) do
     t.datetime "created_at",        null: false
     t.datetime "updated_at",        null: false
     t.index ["champion_id", "summoner_spell_id"], name: "champion_to_sspell", unique: true, using: :btree
+  end
+
+  create_table "funny_matches", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.bigint   "match_id"
+    t.integer  "troll_participant_id"
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
   end
 
   create_table "item_dependencies", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|

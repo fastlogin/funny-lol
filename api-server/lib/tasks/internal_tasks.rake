@@ -36,7 +36,7 @@ namespace :funny_lol do
 			participants.each do |participant|
 
 				eligible_participant = false
-				items = [participant.item_one_id, participant.item_two_id, participant.item_three_id, participant.item_four_id, participant.item_five_id, participant.item_six_id]
+				items = get_items_no_trinket
 
 				items.each do |item|
 					if ItemStatistic.exists?(item)
@@ -99,7 +99,7 @@ namespace :funny_lol do
 
 				final_build_stats = Hash.new
 				eligible_participant = false
-				items = [participant.item_one_id, participant.item_two_id, participant.item_three_id, participant.item_four_id, participant.item_five_id, participant.item_six_id]
+				items = participant.get_items_no_trinket
 
 				items.each do |item|
 					if ItemStatistic.exists?(item)
@@ -132,6 +132,19 @@ namespace :funny_lol do
 				variable.variance = value.to_f / counts[champion]
 				variable.save
 			end
+		end
+	end
+
+	##
+	# Machine Learning Classifier
+	#
+	# @author: George Ding (gd264@cornell.edu)
+	# @description: Classify all matches.
+	##
+	desc "Classifying all matches..."
+	task :classify_matches => [:environment] do
+		Match.where(has_been_classified: false).each do |match|
+			FunnyMatch.classify_match(match.match_id)
 		end
 	end
 end
